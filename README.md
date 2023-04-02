@@ -1,2 +1,2 @@
 ## 模板
-    vue3 基于vite的模板
+    react 基于webpack的模板
