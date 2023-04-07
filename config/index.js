@@ -11,7 +11,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { VueLoaderPlugin } = require('vue-loader')
 // vue-loader插件
 
-
+const ESLintPlugin = require('eslint-webpack-plugin');
+// eslint依赖
 
 const getstyleloaders=(pre)=>{
     return [
@@ -83,14 +84,10 @@ module.exports={
         }]
     },
     plugins:[
-        new HtmlWebpackPlugin({ //结构与原html一致，且自动引入打包的资源
-            template:path.resolve(__dirname,'../public/index.html')
-        }),
-        new MiniCssExtractPlugin({
-            filename:'static/css/[name].[hash:5].css'
-        }),
-        new VueLoaderPlugin(),
-        
+        new HtmlWebpackPlugin({ template:path.resolve(__dirname,'../public/index.html')}),//结构与原html一致，且自动引入打包的资源
+        new MiniCssExtractPlugin({filename:'static/css/[name].[hash:5].css'}), //将css文件合并拆分出来的插件
+        new VueLoaderPlugin(),//vue-loader插件
+        new ESLintPlugin()//eslint依赖
         ],
 
 }
